@@ -78,11 +78,14 @@ return (
         onChangeText={(confirmPassword) => setConfirmPassword(passconfirmPasswordword)}
       />
     </View>
-
+    <Text style={styles.loginText}>Already have an account? </Text>
     <TouchableOpacity>
-      <Text style={styles.forgot_button}>Forgot Password?</Text>
+      <Text style={styles.sign_up_button} onPress={
+                () => {
+                    props.navigation.navigate('Login')
+                }
+            }>Login</Text>
     </TouchableOpacity>
-
     <TouchableOpacity style={styles.loginBtn}>
       <Text style={styles.loginText}>LOGIN</Text>
     </TouchableOpacity>

@@ -39,6 +39,13 @@ return (
     </View>
 
     <TouchableOpacity>
+      <Text style={styles.sign_up_button} onPress={
+                () => {
+                    props.navigation.navigate('SignUp')
+                }
+            }>Sign Up</Text>
+    </TouchableOpacity>
+    <TouchableOpacity>
       <Text style={styles.forgot_button}>Forgot Password?</Text>
     </TouchableOpacity>
 
@@ -78,9 +85,14 @@ TextInput: {
   marginLeft: 20,
 },
 
+sign_up_button:{
+marginLeft: "-30%",
+},
+
 forgot_button: {
-  height: 30,
-  marginBottom: 30,
+  marginBottom: 20,
+  marginTop: "-5.5%",
+  marginLeft: "29%",
 },
 
 loginBtn: {

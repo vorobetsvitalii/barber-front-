@@ -13,13 +13,11 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LoginForm from "./LoginForm";
 import SignupForm from "./SignupForm";
-import RegLogNav from "./RegLogNav";
 const Stack = createNativeStackNavigator();
 
 function MyStack() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="RegLogin" component={RegLogNav}/>
       <Stack.Screen name="Login" component={LoginForm} />
       <Stack.Screen name="SignUp" component={SignupForm} />
     </Stack.Navigator>

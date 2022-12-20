@@ -50,7 +50,7 @@ class App extends Component {
 
   handle_signup = (e, data) => {
     e.preventDefault();
-    fetch('http://localhost:8000/alino/users/', {
+    fetch('https://44d2-93-77-132-232.eu.ngrok.io/alino/users/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

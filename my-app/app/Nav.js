@@ -1,6 +1,6 @@
 import React from 'react';
-import SignupForm from './SignupForm';
-import LoginForm from './LoginForm';
+import SignupForm from './Screens/SignupForm';
+import LoginForm from './Screens/LoginForm';
 import {
   StyleSheet,
   Text,

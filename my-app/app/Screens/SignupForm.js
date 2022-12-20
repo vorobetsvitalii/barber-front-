@@ -1,5 +1,6 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import {
   StyleSheet,
   Text,
@@ -8,6 +9,8 @@ import {
   TextInput,
   Button,
   TouchableOpacity,
+  ActivityIndicator,
+  FlatList,
 } from "react-native";
 
  function SignupForm(props) {
@@ -17,6 +20,26 @@ const [email, setEmail] = useState("");
 const [phoneNumber, setphoneNumber] = useState("");
 const [password, setPassword] = useState("");
 const [confirmPassword, setConfirmPassword] = useState("");
+
+const [data, setData] = useState([]);
+
+handle_signup = () => {
+    fetch('https://44d2-93-77-132-232.eu.ngrok.io/alino/users/', {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      username: firstName,
+      last_name: lastName,
+      email: email,
+      phoneNumber: phoneNumber,
+      password: password,
+
+}),
+});
+};
 
 
 return (
@@ -66,7 +89,7 @@ return (
         placeholder="Password"
         placeholderTextColor="#003f5c"
         secureTextEntry={true}
-        onChangeText={(password) => setlastName(password)}
+        onChangeText={(password) => setPassword(password)}
       />
     </View>
     <View style={styles.inputView}>
@@ -75,7 +98,7 @@ return (
         placeholder="Confirm Password"
         placeholderTextColor="#003f5c"
         secureTextEntry={true}
-        onChangeText={(confirmPassword) => setConfirmPassword(passconfirmPasswordword)}
+        onChangeText={(confirmPassword) => setConfirmPassword(confirmPassword) }
       />
     </View>
     <Text style={styles.loginText}>Already have an account? </Text>
@@ -86,9 +109,19 @@ return (
                 }
             }>Login</Text>
     </TouchableOpacity>
-    <TouchableOpacity style={styles.loginBtn}>
-      <Text style={styles.loginText}>LOGIN</Text>
+    <TouchableOpacity style={styles.loginBtn}
+    onPress={
+      () => {
+        console.log("Pressed");
+        handle_signup();
+      }
+  }>
+    <Text style={styles.sign_up_button}>SIGN UP</Text>
     </TouchableOpacity>
+    <Text>
+    {JSON.stringify(data, null, 2) }
+    </Text>
+    
   </View>
 );
 }

@@ -9,25 +9,39 @@ import {
   TextInput,
   Button,
   TouchableOpacity,
+  BackHandler
 } from "react-native";
 
 
 
 function LoginForm(props) {
+
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [btnColor, setBtnColor] = useState(false);
+  const [error, setError] = useState("");
+  //const [btnColor, setBtnColor] = useState(false);
 
-  useEffect(() => {
-    if (password == '' || email == '' ) {
-      setBtnColor(false);
-    } else {
-      setBtnColor(true);
+  formValidation = async (request) => {
+
+    // input validation
+    if (request == 400) {
+      setError("Не правильні дані");
+    } else if (request == 200) {
+      props.navigation.popToTop()
+      props.navigation.navigate('Home')
+      setError("");
     }
-  }, [password]);
 
-  handle_login = (data) => {
-    fetch('https://44d2-93-77-132-232.eu.ngrok.io/token-auth/', {
+    else {
+      console.log("server error");
+      setError("");
+    }
+
+  }
+
+  handle_login = async (data) => {
+    fetch('https://2d2c-93-77-132-232.eu.ngrok.io/token-auth/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -35,69 +49,72 @@ function LoginForm(props) {
       body: JSON.stringify({
         username: email,
         password: password,
-  
-  }),
-    })
-      .then(res => res.json())
-      .then(json => {
-        localStorage.setItem('token', json.token);
-      });
-  };
 
+      }),
+    })
+      .then(res => {
+        res.json();
+        formValidation(res.status);
+      })
+/*      .then(json => {
+        localStorage.setItem('token', json.token);
+      });*/;
+  }
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
       <View>
-        <Text>EMAIL AБО ТЕЛЕФОН</Text>
-        <View style={styles.inputView}>
-          <TextInput
-            style={styles.TextInput}
-            onChangeText={(email) => setEmail(email)}
-          />
-          <View style={styles.underline}/>
-        </View>
-      </View>
-
-
-      <View>
-        <Text>ПАРОЛЬ</Text>
-        <View style={styles.inputView}>
-          <TextInput
-            style={styles.TextInput}
-            onChangeText={(password) => setPassword(password)}
-          />
-          <View style={styles.underline}/>
-        </View>
-      </View>
-
-      <TouchableOpacity>
+        <Text style={styles.sign_in_button}>
+          Sign in
+        </Text>
         <Text style={styles.sign_up_button} onPress={
           () => {
-            props.navigation.navigate('SignUp')
+            props.navigation.navigate('SignUp1')
           }
         }>Sign Up</Text>
-      </TouchableOpacity>
+      </View>
+      <View style={styles.SignUpUnderline} />
+      <View>
+        <View style={[styles.inputView, { marginTop: vh(30) }]}>
+          <TextInput
+            style={styles.TextInput}
+            placeholder="Email"
+            placeholderTextColor="#696969"
+            onChangeText={(email) => setEmail(email)}
+          />
+          <View style={styles.underline} />
+        </View>
+      </View>
+
+
+      <View style={styles.inputView}>
+        <TextInput
+          style={styles.TextInput}
+          placeholder="Password"
+          placeholderTextColor="#696969"
+          secureTextEntry
+          onChangeText={(password) => setPassword(password)}
+        />
+        <View style={styles.underline} />
+        {error.length > 0 && <Text style={styles.textDanger}>{error}</Text>}
+      </View>
+
+
       <TouchableOpacity>
         <Text style={styles.forgot_button}>Forgot Password?</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={
-              [
-                btnColor
-                ? styles.activeColor
-                : styles.notActiveColor,
-                styles.loginBtn
-              ]
-              
-            }
-            onPress={
-              () => {
-                console.log("Pressed");
-                handle_login();
-              }
-            }
-            >
-        <Text style={{color:"white"}}>УВІЙТИ</Text>
+      <TouchableOpacity
+        style={styles.loginBtn}
+        onPress={
+          () => {
+            console.log("Pressed"),
+              handle_login()
+            console.log(error);
+          }
+        }
+      >
+        <Text style={styles.login_text}>Login</Text>
       </TouchableOpacity>
     </View>
   );
@@ -106,43 +123,74 @@ function LoginForm(props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#CFE8DC",
     alignItems: "center",
-    justifyContent: "center",
+    //justifyContent: "center",
   },
 
 
-  inputView: {
-    width: "90%",
-    height: 45,
-    marginBottom: 20,
-  },
 
   TextInput: {
-    height: 50,
     flex: 1,
+    marginLeft: vw(3),
   },
 
   sign_up_button: {
-    marginLeft: "-30%",
+    position: 'absolute',
+    flex: 1,
+    left: vw(8),
+    fontSize: vw(8),
+    marginTop: vh(8),
+    color: '#696969',
+  },
+
+  sign_in_button: {
+    position: 'absolute',
+    flex: 1,
+    left: -vw(40),
+    fontSize: vw(10),
+    marginTop: vh(7),
+  },
+
+  inputView: {
+    backgroundColor: "#D0EDDF",
+    width: "90%",
+    height: 45,
+    marginBottom: vh(3),
+  },
+
+  login_text: {
+    color: "white",
+    textAlign: 'center',
+    fontSize: vw(5),
   },
 
   forgot_button: {
-    marginBottom: 20,
-    marginTop: "-5.5%",
-    marginLeft: "29%",
+    marginTop: vh(4),
+    marginLeft: vw(50),
   },
 
   loginBtn: {
-    width: "70%",
-    borderRadius: 25,
-    height: "10%",
-    alignItems: "center",
-    justifyContent: "center",
-    marginTop: 40,
+    width: vw(25),
+    height: vw(10),
+    marginTop: vh(-4),
+    marginLeft: vw(-65),
+    justifyContent: 'center',
+    backgroundColor: "#66b3ff",
+    shadowColor: "#000",
+    shadowOpacity: 0.51,
+    shadowRadius: 90,
+    elevation: 15,
+  },
+  SignUpUnderline: {
+    position: 'absolute',
+    backgroundColor: "#696969",
+    height: 1,
+    marginTop: vh(16),
+    width: vw(100),
   },
   underline: {
-    backgroundColor: "grey",
+    backgroundColor: "black",
     height: 1,
     width: vw(90),
   },
@@ -151,6 +199,9 @@ const styles = StyleSheet.create({
   },
   activeColor: {
     backgroundColor: "#00BFFF",
-  }
+  },
+  textDanger: {
+    color: "#dc3545"
+  },
 })
 export default LoginForm

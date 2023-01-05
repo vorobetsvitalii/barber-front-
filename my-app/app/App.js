@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import Nav from "./Nav";
-import Test from "./Test";
+import registerNNPushToken from 'native-notify';
 
 
 export default function A() {
-  return (
+  registerNNPushToken(5604, 'PWOQskXHUsIUG6FMVfpyJB');
+    return (
    <Nav/>
   )
 };

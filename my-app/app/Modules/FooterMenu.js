@@ -1,0 +1,68 @@
+import { StatusBar } from "expo-status-bar";
+import { vw, vh } from 'react-native-expo-viewport-units';
+import React, { useState, useEffect } from "react";
+import EntypoIcon from "react-native-vector-icons/Entypo";
+import MaterialComIcon from "react-native-vector-icons/MaterialCommunityIcons";
+import FeatherIcon from 'react-native-vector-icons/Feather';
+import {
+  StyleSheet,
+  View,
+} from "react-native";
+
+function Footer(props) {
+
+  return (
+      <View style={{ flex: 1, justifyContent: 'flex-end' }}>
+        <View style={styles.bottom_menu}>
+          <EntypoIcon
+            name="home"
+            size={vw(8)}
+            style={styles.homeIcon}
+            onPress={() =>{
+              console.log('1')
+            }}
+          />
+          <EntypoIcon
+          name='heart-outlined'
+          size={vw(8)}
+          style={styles.heartIcon}
+          onPress={() =>{
+            console.log('2')
+          }}
+          />
+          <FeatherIcon
+          name='shopping-bag'
+          size={vw(8)}
+          style={styles.historyIcon}
+          onPress={() =>{
+            console.log('3')
+          }}
+          />
+        </View>
+      </View>
+  );
+}
+const styles = StyleSheet.create({
+  bottom_menu: {
+    width: vw(100),
+    height: vh(7),
+    justifyContent: 'center',
+    backgroundColor: 'white'
+  },
+  homeIcon: {
+    position: 'absolute',
+    marginLeft: vw(7),
+    color: "#5ACCE4"
+  },
+  heartIcon: {
+    position: 'absolute',
+    alignSelf: 'center',
+    color: '#ADADAF'
+  },
+  historyIcon: {
+    alignSelf: 'flex-end',
+    marginRight: vw(7),
+    color: '#ADADAF'
+  }
+})
+export default Footer

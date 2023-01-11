@@ -1,6 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import { vw, vh } from 'react-native-expo-viewport-units';
 import React, { useState, useEffect } from "react";
+import { useNavigation } from '@react-navigation/native';
 import EntypoIcon from "react-native-vector-icons/Entypo";
 import MaterialComIcon from "react-native-vector-icons/MaterialCommunityIcons";
 import FeatherIcon from 'react-native-vector-icons/Feather';
@@ -10,36 +11,37 @@ import {
 } from "react-native";
 
 function Footer(props) {
+  const navigation = useNavigation();
 
   return (
-      <View style={{ flex: 1, justifyContent: 'flex-end' }}>
-        <View style={styles.bottom_menu}>
-          <EntypoIcon
-            name="home"
-            size={vw(8)}
-            style={styles.homeIcon}
-            onPress={() =>{
-              console.log('1')
-            }}
-          />
-          <EntypoIcon
+    <View style={{ flex: 1, justifyContent: 'flex-end' }}>
+      <View style={styles.bottom_menu}>
+        <EntypoIcon
+          name="home"
+          size={vw(8)}
+          style={styles.homeIcon}
+          onPress={() => {
+            console.log('1')
+          }}
+        />
+        <EntypoIcon
           name='heart-outlined'
           size={vw(8)}
           style={styles.heartIcon}
-          onPress={() =>{
-            console.log('2')
+          onPress={() => {
+            navigation.navigate("Favorites")
           }}
-          />
-          <FeatherIcon
+        />
+        <FeatherIcon
           name='shopping-bag'
           size={vw(8)}
           style={styles.historyIcon}
-          onPress={() =>{
+          onPress={() => {
             console.log('3')
           }}
-          />
-        </View>
+        />
       </View>
+    </View>
   );
 }
 const styles = StyleSheet.create({

@@ -24,7 +24,7 @@ function Home(props) {
       <View style={styles.categories1}>
         <TouchableOpacity
           onPress={() => {
-            console.log("beauty")
+            props.navigation.navigate("ListOfItems", {endpoint: "posts", name: "Beauty"})
           }}>
           <ImageBackground
             source={require('../Images/beauty.png')}
@@ -36,7 +36,7 @@ function Home(props) {
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
-            props.navigation.navigate("Cafes")
+            props.navigation.navigate("ListOfItems", {endpoint: "posts", name: "Cafes"})
           }}>
           <ImageBackground
             source={require('../Images/cafe.png')}
@@ -48,7 +48,7 @@ function Home(props) {
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
-            console.log("CONCERTS")
+            props.navigation.navigate("ListOfItems", {endpoint: "posts", name: "Concerts"})
           }}>
           <ImageBackground
             source={require('../Images/concerts.png')}
@@ -61,7 +61,7 @@ function Home(props) {
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
-            console.log("CINEMA")
+            props.navigation.navigate("ListOfItems", {endpoint: "posts", name: "Cinema"})
           }}>
           <ImageBackground
             source={require('../Images/cinema.png')}
@@ -76,7 +76,7 @@ function Home(props) {
       <View style={styles.categories2}>
         <TouchableOpacity
           onPress={() => {
-            console.log("sport")
+            props.navigation.navigate("ListOfItems", {endpoint: "posts", name: "Sport"})
           }}>
           <ImageBackground
             source={require('../Images/sport.png')}
@@ -89,7 +89,7 @@ function Home(props) {
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
-            console.log("Health")
+            props.navigation.navigate("ListOfItems", {endpoint: "posts", name: "Health"})
           }}>
           <ImageBackground
             source={require('../Images/health.png')}
@@ -102,7 +102,7 @@ function Home(props) {
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
-            console.log("THEATER")
+            props.navigation.navigate("ListOfItems", {endpoint: "posts", name: "Theaters"})
           }}>
           <ImageBackground
             source={require('../Images/theater.png')}

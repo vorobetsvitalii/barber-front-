@@ -43,11 +43,11 @@ function Signup1(props) {
 
     if (firstName.length == 0) {
       errorFlag = true;
-      SetError("This is required feild");
+      SetError("This is required field");
     }
     if (lastName.length == 0) {
       errorFlag = true;
-      SetError("This is required feild");
+      SetError("This is required field");
     }
     if (errorFlag) {
       console.log("errorFlag");

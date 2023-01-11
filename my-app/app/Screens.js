@@ -5,10 +5,10 @@ import SignupForm1 from "./Screens/SignupForm1";
 import SignupForm2 from "./Screens/SignupForm2";
 import SignupForm3 from "./Screens/SignupForm3";
 import Home from "./Screens/Home";
-import Cafes from "./Screens/Cafes";
+import ListOfItems from "./Screens/ListOfItems";
 import Settings from "./Screens/Settings";
-import Restaurants from "./Screens/Restaurants";
-import Test from "./Screens/Test";
+import ItemPage from "./Screens/ItemPage";
+import Favorites from "./Screens/Favorites";
 import { Header } from 'react-native/Libraries/NewAppScreen';
 const Stack = createNativeStackNavigator();
 
@@ -32,8 +32,9 @@ function MyStack() {
       <Stack.Screen name="SignUp2" component={SignupForm2} />
       <Stack.Screen name="SignUp3" component={SignupForm3} />
       <Stack.Screen name="Settings" component={Settings} />
-      <Stack.Screen name="Cafes" component={Cafes} />
-      <Stack.Screen name="Restaurants" component={Restaurants} />
+      <Stack.Screen name="ListOfItems" component={ListOfItems} />
+      <Stack.Screen name="ItemPage" component={ItemPage} />
+      <Stack.Screen name="Favorites" component={Favorites} />
     </Stack.Navigator>
   );
 }

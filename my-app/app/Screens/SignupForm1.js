@@ -18,7 +18,10 @@ import {
 function Signup1(props) {
   const [firstName, setfirstName] = useState("");
   const [lastName, setlastName] = useState("");
-  const [error, SetError] = useState("");
+  const [emptyFirstError, SetEmptyFirstError] = useState("");
+  const [emptyLastError, SetEmptyLarstError] = useState("");
+  const [bigFirstError, SetBigFirstError] = useState("First name must be less than 20 char");
+  const [bigLastError, SetBigLastError] = useState("Last name must be less than 20 char");
   const [data, setData] = useState([]);
 
   /*handle_signup = () => {
@@ -43,18 +46,29 @@ function Signup1(props) {
 
     if (firstName.length == 0) {
       errorFlag = true;
-      SetError("This is required field");
+      SetEmptyFirstError("This is required field");
     }
     if (lastName.length == 0) {
       errorFlag = true;
-      SetError("This is required field");
+      SetEmptyLarstError("This is required field");
+    }
+    if (firstName.length > 20) {
+      errorFlag = true;
+      SetEmptyFirstError("");
+    }
+    if (lastName.length > 20) {
+      errorFlag = true;
+      SetEmptyLarstError("");
     }
     if (errorFlag) {
       console.log("errorFlag");
     }
     else {
       //handle_signup();
-      SetError("");
+      SetBigFirstError("");
+      SetBigLastError("");
+      SetEmptyFirstError("");
+      SetEmptyLarstError("");
       props.navigation.navigate('SignUp2', { firstname: firstName, lastname: lastName })
     }
   }
@@ -82,7 +96,8 @@ function Signup1(props) {
           onChangeText={(firstName) => setfirstName(firstName)}
         />
         <View style={styles.underline} />
-        {error.length > 0 && <Text style={styles.textDanger}>{error}</Text>}
+        {firstName.length == 0 && <Text style={styles.textDanger}>{emptyFirstError}</Text>}
+        {firstName.length > 20 && <Text style={styles.textDanger}>{bigFirstError}</Text>}
       </View>
 
       <View style={styles.inputView}>
@@ -93,7 +108,8 @@ function Signup1(props) {
           onChangeText={(lastName) => setlastName(lastName)}
         />
         <View style={styles.underline} />
-        {error.length > 0 && <Text style={styles.textDanger}>{error}</Text>}
+        {lastName.length == 0 && <Text style={styles.textDanger}>{emptyLastError}</Text>}
+        {lastName.length > 20 && <Text style={styles.textDanger}>{bigLastError}</Text>}
       </View>
       <TouchableOpacity
         style={styles.NextBtn}

@@ -3,6 +3,7 @@ import { useNavigation } from '@react-navigation/native';
 import { vw, vh } from 'react-native-expo-viewport-units';
 import React, { useState, useEffect } from "react";
 import {
+  Dimensions,
   StyleSheet,
   View,
 } from "react-native";
@@ -30,7 +31,7 @@ const navigation = useNavigation();
 const styles = StyleSheet.create({
     bars_icon: {
         position: 'absolute',
-        marginTop: vh(7),
+        marginTop: Dimensions.get("window").height * 0.065,
         marginLeft: vw(3),
       },
 })

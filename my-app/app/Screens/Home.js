@@ -10,7 +10,8 @@ import {
   View,
   Image,
   ImageBackground,
-  TouchableOpacity
+  TouchableOpacity,
+  Dimensions
 } from "react-native";
 import Footer from "../Modules/FooterMenu"
 import Settings from "../Modules/SettingsIcon"
@@ -113,6 +114,18 @@ function Home(props) {
 
           </ImageBackground>
         </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            props.navigation.navigate("ListOfItems", {endpoint: "posts", name: "Travel"})
+          }}>
+          <ImageBackground
+            source={require('../Images/travel.png')}
+            style={styles.catecoryImage}
+            imageStyle={{ borderRadius: 15 }}
+          >
+            <Text style={styles.categoryName}>TRAVEL</Text>
+          </ImageBackground>
+        </TouchableOpacity>
       </View>
       <Footer />
     </View>
@@ -125,34 +138,19 @@ const styles = StyleSheet.create({
   },
   bars_icon: {
     position: 'absolute',
-    marginTop: vh(7),
+    marginTop:  Dimensions.get("window").height * 0.07,
     marginLeft: vw(3),
   },
   bottom_menu: {
     width: vw(100),
-    height: vh(7),
+    height: Dimensions.get("window").height * 0.07,
     justifyContent: 'center',
     backgroundColor: 'white'
   },
-  homeIcon: {
-    position: 'absolute',
-    marginLeft: vw(7),
-    color: "#5ACCE4"
-  },
-  heartIcon: {
-    position: 'absolute',
-    alignSelf: 'center',
-    color: '#ADADAF'
-  },
-  historyIcon: {
-    alignSelf: 'flex-end',
-    marginRight: vw(7),
-    color: '#ADADAF'
-  },
   catecoryImage: {
-    marginTop: vh(1),
+    marginTop: Dimensions.get("window").height * 0.01,
     width: vw(42.5),
-    height: vh(20),
+    height: Dimensions.get("window").height * 0.19,
     alignSelf: 'center',
     alignItems: 'flex-start',
     justifyContent: 'flex-end'
@@ -166,20 +164,20 @@ const styles = StyleSheet.create({
   },
   categories1: {
     position: 'absolute',
-    marginTop: vh(12),
+    marginTop:  Dimensions.get("window").height * 0.12,
     marginLeft: vw(5),
     width: vw(40)
   },
   categories2: {
     position: 'absolute',
-    marginTop: vh(12),
+    marginTop: Dimensions.get("window").height * 0.12,
     marginLeft: vw(55),
     width: vw(40)
   },
   alinoText: {
-    fontSize: vw(10),
+    fontSize: Dimensions.get("screen").height * 0.046,
     alignSelf: 'center',
-    marginTop: vh(5)
+    marginTop: Dimensions.get("window").height / 20
   }
 })
 export default Home

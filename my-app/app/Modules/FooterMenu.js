@@ -8,13 +8,14 @@ import FeatherIcon from 'react-native-vector-icons/Feather';
 import {
   StyleSheet,
   View,
+  Dimensions
 } from "react-native";
 
 function Footer(props) {
   const navigation = useNavigation();
 
   return (
-    <View style={{ flex: 1, justifyContent: 'flex-end' }}>
+    <View style={{flex: 1, justifyContent: 'flex-end' }}> 
       <View style={styles.bottom_menu}>
         <EntypoIcon
           name="home"
@@ -46,8 +47,9 @@ function Footer(props) {
 }
 const styles = StyleSheet.create({
   bottom_menu: {
+    position: "absolute",
     width: vw(100),
-    height: vh(7),
+    height: Dimensions.get("window").height * 0.07,
     justifyContent: 'center',
     backgroundColor: 'white'
   },

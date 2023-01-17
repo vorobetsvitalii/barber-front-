@@ -62,7 +62,10 @@ function SignUp3(props) {
         else {
             //handle_signup();
             console.log("Good");
-            props.navigation.navigate('Main');
+            props.navigation.reset({
+                index: 0,
+                routes: [{ name: 'Home' }],
+              });
         }
     }
 

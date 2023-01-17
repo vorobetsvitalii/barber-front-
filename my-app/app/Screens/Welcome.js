@@ -39,6 +39,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: "#CFE8DC",
+        justifyContent: "center",
         alignItems: "center",
     },
     weclome_text: {
@@ -49,7 +50,7 @@ const styles = StyleSheet.create({
     signup_button: {
         width: vw(30),
         height: vw(10),
-        marginTop: vw(10),
+        marginTop: "10%",
         justifyContent: 'center',
         backgroundColor: "#66b3ff",
         shadowColor: "#000",
@@ -60,7 +61,7 @@ const styles = StyleSheet.create({
     signin_button: {
         width: vw(30),
         height: vw(10),
-        marginTop: vw(60),
+        marginTop: "40%",
         justifyContent: 'center',
         backgroundColor: "#66b3ff",
         shadowColor: "#000",

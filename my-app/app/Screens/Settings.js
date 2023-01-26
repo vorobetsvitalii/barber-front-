@@ -57,7 +57,7 @@ function Settings(props) {
             <View >
                 <TouchableOpacity
                     onPress={() => {
-                        console.log("ksjfksj")
+                        props.navigation.navigate("ChangeProfile")
                     }}>
                     <View style={[styles.small_rectangle, { marginTop: vh(5) }]}>
                         <MaterialCommunityIcons
@@ -246,7 +246,7 @@ const styles = StyleSheet.create({
     marginTop: vh(10),
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: "#66b3ff",
+    backgroundColor: "#5ACCE4",
     shadowColor: "#000",
     shadowOpacity: 0.51,
     shadowRadius: 90,

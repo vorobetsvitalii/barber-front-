@@ -21,18 +21,18 @@ function Signup2(props, route) {
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   handle_signup = () => {
-    fetch('https://74b0-46-211-95-128.eu.ngrok.io/core/users/', {
+    fetch('https://d43d-46-211-73-176.eu.ngrok.io/core/users/', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        username: "emai@gmail.com",
-        email: "emai@gmail.com",
+       // username: "fuckingDjango",
+        email_address: "emaillll@gmail.com",
         phone_number: "1234567890",
         first_name: "firstname",
-        last_name: "lastname",
+        second_name: "lastname",
         password: "12345678"
       }),
     });
@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
     height: vw(10),
     marginTop: vh(40),
     justifyContent: 'center',
-    backgroundColor: "#66b3ff",
+    backgroundColor: "#5ACCE4",
     shadowColor: "#000",
     shadowOpacity: 0.51,
     shadowRadius: 90,

@@ -9,7 +9,8 @@ import ListOfItems from "./Screens/ListOfItems";
 import Settings from "./Screens/Settings";
 import ItemPage from "./Screens/ItemPage";
 import Favorites from "./Screens/Favorites";
-import { Header } from 'react-native/Libraries/NewAppScreen';
+import NoInternetConnection from "./Screens/NoInternetConnection";
+import ChangeProfile from "./Screens/ChangeProfile";
 const Stack = createNativeStackNavigator();
 
 
@@ -20,6 +21,7 @@ const Stack = createNativeStackNavigator();
 
 
 function MyStack() {
+
   return (
     <Stack.Navigator
       screenOptions={{
@@ -35,6 +37,8 @@ function MyStack() {
       <Stack.Screen name="ListOfItems" component={ListOfItems} />
       <Stack.Screen name="ItemPage" component={ItemPage} />
       <Stack.Screen name="Favorites" component={Favorites} />
+      <Stack.Screen name="NoInternetConnection" component={NoInternetConnection} />
+      <Stack.Screen name="ChangeProfile" component={ChangeProfile} />
     </Stack.Navigator>
   );
 }

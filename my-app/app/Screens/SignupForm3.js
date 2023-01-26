@@ -187,7 +187,7 @@ const styles = StyleSheet.create({
         height: vw(10),
         marginTop: vh(40),
         justifyContent: 'center',
-        backgroundColor: "#66b3ff",
+        backgroundColor: "#5ACCE4",
         shadowColor: "#000",
         shadowOpacity: 0.51,
         shadowRadius: 90,

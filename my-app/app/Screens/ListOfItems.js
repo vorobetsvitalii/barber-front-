@@ -169,7 +169,7 @@ function ListOfItems(props) {
                 snapToAlignment="start"
                 snapToInterval={Dimensions.get("window").width}
             />
-:
+            :
             <FlatList
                 data={filteredDataSource}
                 keyExtractor={(item, index) => index.toString()}

@@ -65,8 +65,6 @@ function Signup1(props) {
     }
     else {
       //handle_signup();
-      SetBigFirstError("");
-      SetBigLastError("");
       SetEmptyFirstError("");
       SetEmptyLarstError("");
       props.navigation.navigate('SignUp2', { firstname: firstName, lastname: lastName })
@@ -96,7 +94,7 @@ function Signup1(props) {
           onChangeText={(firstName) => setfirstName(firstName)}
         />
         <View style={styles.underline} />
-        {firstName.length == 0 && <Text style={styles.textDanger}>{emptyFirstError}</Text>}
+        {emptyFirstError.length > 0 && <Text style={styles.textDanger}>{emptyFirstError}</Text>}
         {firstName.length > 20 && <Text style={styles.textDanger}>{bigFirstError}</Text>}
       </View>
 
@@ -108,7 +106,7 @@ function Signup1(props) {
           onChangeText={(lastName) => setlastName(lastName)}
         />
         <View style={styles.underline} />
-        {lastName.length == 0 && <Text style={styles.textDanger}>{emptyLastError}</Text>}
+        {emptyLastError.length > 0 && <Text style={styles.textDanger}>{emptyLastError}</Text>}
         {lastName.length > 20 && <Text style={styles.textDanger}>{bigLastError}</Text>}
       </View>
       <TouchableOpacity
@@ -195,7 +193,7 @@ const styles = StyleSheet.create({
     height: vw(10),
     marginTop: vh(40),
     justifyContent: 'center',
-    backgroundColor: "#66b3ff",
+    backgroundColor: "#5ACCE4",
     shadowColor: "#000",
     shadowOpacity: 0.51,
     shadowRadius: 90,

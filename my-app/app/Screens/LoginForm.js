@@ -26,7 +26,7 @@ function LoginForm(props) {
 
     // input validation
     if (request == 400) {
-      setError("Не правильні дані");
+      setError("Неправильні дані");
     } else if (request == 200) {
       props.navigation.popToTop()
       props.navigation.navigate('Home')
@@ -176,7 +176,7 @@ const styles = StyleSheet.create({
     marginTop: vh(-4),
     marginLeft: vw(-65),
     justifyContent: 'center',
-    backgroundColor: "#66b3ff",
+    backgroundColor: "#5ACCE4",
     shadowColor: "#000",
     shadowOpacity: 0.51,
     shadowRadius: 90,
